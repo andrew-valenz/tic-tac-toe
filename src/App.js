@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import { GameProvider } from './context/GameContext.js';
+import Board from './components/Board.js';
 
 function App() {
   return (
     <div className="App">
-      <GameProvider />
+      <h1>Tic Tac Slay</h1>
+      {/* header */}
+      <Board />
     </div>
   );
 }
