@@ -48,7 +48,15 @@ const GameProvider = ({ children }) => {
 // };
 
 const checkWinner = (board) => {
-  if (board[0].content === board[1].content && board[1].content === board[2].content) {
+  if (board[0].content === board[1].content && board[1].content === board[2].content);
+  if (board[3].content === board[4].content && board[4].content === board[5].content);
+  if (board[6].content === board[7].content && board[7].content === board[8].content);
+  if (board[0].content === board[3].content && board[3].content === board[6].content);
+  if (board[1].content === board[4].content && board[4].content === board[7].content);
+  if (board[2].content === board[5].content && board[5].content === board[8].content);
+  if (board[0].content === board[4].content && board[4].content === board[8].content);
+  if (board[2].content === board[4].content && board[4].content === board[6].content);
+  {
     console.log('winner');
   }
 };
