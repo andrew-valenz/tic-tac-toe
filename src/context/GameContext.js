@@ -17,6 +17,7 @@ const GameProvider = ({ children }) => {
       board[space] = { space: space, content: currentPlayer };
       // switching the current player
       setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
+      checkWinner(board);
     }
   };
 
@@ -37,6 +38,19 @@ const GameProvider = ({ children }) => {
       {children}
     </GameContext.Provider>
   );
+};
+
+// export function isCatsGame() {
+//   const { board } = useGameContext();
+//   board.map((box) => {(
+//     if (active = false);
+//   )}
+// };
+
+const checkWinner = (board) => {
+  if (board[0].content === board[1].content && board[1].content === board[2].content) {
+    console.log('winner');
+  }
 };
 
 const useGameContext = () => {
