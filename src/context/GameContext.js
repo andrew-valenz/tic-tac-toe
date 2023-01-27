@@ -11,7 +11,7 @@ const GameProvider = ({ children }) => {
   const [active, setActive] = useState(true);
 
   const handleClick = (space) => {
-    console.log('handleClick', handleClick);
+    if (!active) return;
     if (!board[space].content) {
       // change box content
       board[space] = { space: space, content: currentPlayer };
