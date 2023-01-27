@@ -40,25 +40,15 @@ const GameProvider = ({ children }) => {
   );
 };
 
-// export function isCatsGame() {
-//   const { board } = useGameContext();
-//   board.map((box) => {(
-//     if (active = false);
-//   )}
-// };
+// check for a match of 3
+const checkMatch = (a, b, c) => {
+  if (!a || !b || !c) return false;
+  if (a === b && b === c) return true;
+};
 
+//checking for winning combos
 const checkWinner = (board) => {
-  if (board[0].content === board[1].content && board[1].content === board[2].content);
-  if (board[3].content === board[4].content && board[4].content === board[5].content);
-  if (board[6].content === board[7].content && board[7].content === board[8].content);
-  if (board[0].content === board[3].content && board[3].content === board[6].content);
-  if (board[1].content === board[4].content && board[4].content === board[7].content);
-  if (board[2].content === board[5].content && board[5].content === board[8].content);
-  if (board[0].content === board[4].content && board[4].content === board[8].content);
-  if (board[2].content === board[4].content && board[4].content === board[6].content);
-  {
-    console.log('winner');
-  }
+  if (checkMatch(board[0].content, board[1].content, board[2].content)) console.log('winner!!');
 };
 
 const useGameContext = () => {
