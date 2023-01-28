@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import boardData from '../board-data.js';
 import React from 'react';
 
@@ -11,6 +11,7 @@ const GameProvider = ({ children }) => {
   const [active, setActive] = useState(true);
 
   const handleClick = (space) => {
+    // checkGameStatus(board);
     if (!active) return;
     if (!board[space].content) {
       // change box content
@@ -18,21 +19,26 @@ const GameProvider = ({ children }) => {
       // switching the current player
       setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
       checkWinner(board);
+      setBoard(board);
     }
-    checkGameStatus();
   };
 
-  const checkGameStatus = () => {
+  const boardContent = [];
+  for (let box of board) {
+    boardContent.push(box.content);
+  }
+  // check game status
+
+  const checkGameStatus = (board) => {
     if (!active) return;
     const winner = checkWinner(board);
     if (winner) {
-      console.log('win!!');
       setGameMessage(`You win ${winner}!`);
       setActive(false);
-    } else if (board[8].content === 'X') {
-      setGameMessage('Cats Game!');
-      console.log('cats game');
-      // setActive(false);
+      console.log('winner!!!');
+    } else if (!boardContent.some((i) => i === '')) {
+      console.log('cats game!!');
+      setGameMessage('cats game');
     }
   };
 
@@ -48,6 +54,7 @@ const GameProvider = ({ children }) => {
         active,
         setActive,
         handleClick,
+        checkGameStatus,
       }}
     >
       {children}
@@ -75,7 +82,9 @@ const checkWinner = (board) => {
 
 const useGameContext = () => {
   const context = useContext(GameContext);
-
+  useEffect(() => {
+    context.checkGameStatus(context.board);
+  }, [context]);
   return context;
 };
 export { useGameContext, GameProvider };
