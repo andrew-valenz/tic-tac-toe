@@ -38,7 +38,7 @@ const GameProvider = ({ children }) => {
       console.log('winner!!!');
     } else if (!boardContent.some((i) => i === '')) {
       console.log('cats game!!');
-      setGameMessage('cats game');
+      setGameMessage('try again queen!💋💋💅');
     }
   };
 

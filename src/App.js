@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 import Board from './components/Board.js';
+import Header from './components/Header.js';
 
 function App() {
   return (
     <div className="App">
-      <h1>Tic Tac Slay</h1>
-      {/* header */}
+      <Header />
       <Board />
     </div>
   );
