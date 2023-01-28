@@ -35,9 +35,7 @@ const GameProvider = ({ children }) => {
     if (winner) {
       setGameMessage(`You win ${winner}!`);
       setActive(false);
-      console.log('winner!!!');
     } else if (!boardContent.some((i) => i === '')) {
-      console.log('cats game!!');
       setGameMessage('try again queen!💋💋💅');
     }
   };
